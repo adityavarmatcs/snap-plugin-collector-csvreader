@@ -29,7 +29,7 @@ notifications:
 before_deploy:
 - "./scripts/pre_deploy.sh"
 deploy:
-- provider: s3
+- provider: releases
   api_key: $GITHUB_API_KEY
   file:
     - release/snap-plugin-collector-csvreader_linux_x86_64
@@ -38,7 +38,7 @@ deploy:
     repo: cuongquay/snap-plugin-collector-csvreader
     branch: master
     condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION =~ ^1\.8(|\.[0-9]+)$
-- provider: s3
+- provider: releases
   api_key: $GITHUB_API_KEY
   file:
     - release/snap-plugin-collector-csvreader_linux_x86_64
