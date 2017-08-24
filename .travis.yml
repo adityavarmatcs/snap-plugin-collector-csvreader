@@ -6,7 +6,7 @@ go:
 - 1.8.x
 env:
   global:
-  - ORG_PATH=/home/travis/gopath/src/github.com/cuongquay
+  - ORG_PATH=/home/travis/gopath/src/github.com/intelsdi-x
   - SNAP_PLUGIN_SOURCE=/home/travis/gopath/src/github.com/${TRAVIS_REPO_SLUG}
   - GLIDE_HOME="${HOME}/.glide"
   matrix:
@@ -63,6 +63,6 @@ deploy:
     - release/snap-plugin-collector-csvreader_linux_x86_64
   skip_cleanup: true
   on:
-    repo: intelsdi-x/snap-plugin-collector-csvreader
+    repo: cuongquay/snap-plugin-collector-csvreader
     tags: true
     condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION =~ ^1\.8(|\.[0-9]+)$
