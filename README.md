@@ -67,9 +67,9 @@ This builds the plugin in `./build/`
 #### Task manifest configuration options
 Option|Description|Default value
 ------|-----------|-------------
-"file"|Declaration of full path file name, in CSV format
-"indexes"|Defines the list of column indexes that want to collect, separated by comma
-"indexes"|The units corresponding to the indexes of each metric
+"file"|Declaration of full path file name, in CSV format|"opt/snap/files/metrics.csv"
+"indexes"|Defines the list of column indexes that want to collect, separated by comma|"0,1"
+"units"|The units corresponding to the indexes of each metric|"date,amps"
 
 ## Documentation
 
@@ -189,7 +189,7 @@ This repository is one of **many** plugins in **Snap**, a powerful telemetry fra
 ## Contributing
 We love contributions!
 
-There's more than one way to give back, from examples to bcsvreader to code updates. See our recommended process in [CONTRIBUTING.md](CONTRIBUTING.md).
+There's more than one way to give back, from examples to csvreader to code updates. See our recommended process in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 [Snap](http://github.com:intelsdi-x/snap), along with this plugin, is an Open Source software released under the Apache 2.0 [License](LICENSE).
