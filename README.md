@@ -67,17 +67,9 @@ This builds the plugin in `./build/`
 #### Task manifest configuration options
 Option|Description|Default value
 ------|-----------|-------------
-"metric_name"|Declaration of metric name, the first dynamic part of namespace|all
-"scanning_dir_counter"|Defines when directory should be scanned (per collection or after several collections), for checking if there are new files in csvreader directory (if not defined, csvreader directory is scanned per each metrics collection)|0
-"log_dir"|Filepath expression to get csvreader directory, e.g.:"/var/log/kolla/(neutron\|nova\|cinder)". Filepath expressions available: "(dir1\|dir2\|dirn)", "{dir1,dir2,dirn}", "*"|/var/log
-"log_file"|Regular expression to get file/files which csvreader in directory defined as a “log_dir”, e.g.: "keystone_apache_\S{1,}"|.*
-"splitter_type"|Predefined splitter type. Available options: new-line, empty-line, date-time, custom. If custom, you can set "splitter" option manually.|new-line
-"splitter_pos"|Position of splitter. Available options: before, after.|after
-"splitter_length"|Length of splitter string, use when configuring custom splitter|1
-"splitter"|Characteristic character/characters to split csvreader (by default csvreader are splitted per lines)|\\n
-"cache_dir"|Directory in which offsets for next reading of csvreader are saved, e.g: "/var/cache/snap/". Created automatically if not exists.|/var/cache/snap
-"collection_time"|Maximum time for continuous reading of csvreader, it should be lower than task manifest|300ms
-"metrics_limit"|Limit for metrics returned per each log file during collection|300
+"file"|Declaration of full path file name, in CSV format
+"indexes"|Defines the list of column indexes that want to collect, separated by comma
+"indexes"|The units corresponding to the indexes of each metric
 
 ## Documentation
 
@@ -86,7 +78,7 @@ This plugin has the ability to gather the following metrics:
 
 Namespace | Description
 ----------|-----------------------
-/intel/csvreader/[metric_name]/[log_file]/message|Single log message
+/intel/csvreader/[index]/index|Single column metric
 
 
 ### Examples
@@ -136,14 +128,9 @@ Create a task manifest file (e.g. `task-csvreader.json`):
             },
             "config": {
                 "/intel/csvreader": {
-                    "metric_name": "nova_csvreader",
-                    "cache_dir": "/home/test/cache/snap",
-                    "log_dir": "/home/test/csvreader/(nova|neutron)",
-                    "log_file": ".*",
-                    "splitter_type": "date-time",
-                    "splitter_pos": "before",
-                    "collection_time": "2s",
-                    "metrics_limit": 1000
+                    "file": "/opt/snap/files/test.csv",
+                    "indexes": "0,1",
+                    "unit": "u1,u2"
                 }
             },
             "publish": [
@@ -168,7 +155,7 @@ Load file plugin for publishing:
 $ snaptel plugin load snap-plugin-publisher-file
 Plugin loaded
 Name: file
-Version: 3
+Version: 4
 Type: publisher
 Signed: false
 Loaded Time: Fri, 20 Nov 2015 11:41:39 PST
@@ -208,6 +195,6 @@ There's more than one way to give back, from examples to bcsvreader to code upda
 [Snap](http://github.com:intelsdi-x/snap), along with this plugin, is an Open Source software released under the Apache 2.0 [License](LICENSE).
 
 ## Acknowledgements
-* Author: [@mkleina](https://github.com/mkleina)
+* Author: [@cuongquay](https://github.com/cuongquay)
 
 And **thank you!** Your contribution, through code and participation, is incredibly important to us.
