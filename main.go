@@ -24,7 +24,7 @@ import (
 	// Import the snap plugin library
 	"github.com/intelsdi-x/snap-plugin-lib-go/v1/plugin"
 	// Import logs collector plugin implementation
-	"github.com/intelsdi-x/snap-plugin-collector-csvreader/csvreader"
+	"github.com/cuongquay/snap-plugin-collector-csvreader/csvreader"
 )
 
 func main() {

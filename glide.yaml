@@ -1,4 +1,4 @@
-package: github.com/intelsdi-x/snap-plugin-collector-csvreader
+package: github.com/cuongquay/snap-plugin-collector-csvreader
 import:
 - package: github.com/intelsdi-x/snap-plugin-lib-go
   subpackages:
