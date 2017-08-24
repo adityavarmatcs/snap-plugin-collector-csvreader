@@ -49,7 +49,7 @@ All OSs currently supported by snap:
 ### Installation
 
 #### To build the plugin binary:
-Fork https://github.com/intelsdi-x/snap-plugin-collector-csvreader
+Fork https://github.com/cuongquay/snap-plugin-collector-csvreader
 
 Clone repo into `$GOPATH/src/github.com/intelsdi-x/`:
 
@@ -97,7 +97,7 @@ In another terminal window:
 
 Download csvreader collector plugin:
 ```
-$ wget http://snap.ci.snap-telemetry.io/plugins/snap-plugin-collector-csvreader/latest/linux/x86_64/snap-plugin-collector-csvreader
+$ wget -O snap-plugin-collector-csvreader https://github.com/cuongquay/snap-plugin-collector-csvreader/releases/download/v1.0-rc/snap-plugin-collector-csvreader_linux_x86_64
 ```
 
 Load csvreader plugin
@@ -183,7 +183,7 @@ ID: 02dd7ff4-8106-47e9-8b86-70067cd0a850
 ```
 
 ### Roadmap
-There isn't a current roadmap for this plugin, but it is in active development. As we launch this plugin, we do not have any outstanding requirements for the next release. If you have a feature request, please add it as an [issue](https://github.com/intelsdi-x/snap-plugin-collector-csvreader/issues/new) and/or submit a [pull request](https://github.com/intelsdi-x/snap-plugin-collector-csvreader/pulls).
+There isn't a current roadmap for this plugin, but it is in active development. As we launch this plugin, we do not have any outstanding requirements for the next release. If you have a feature request, please add it as an [issue](https://github.com/cuongquay/snap-plugin-collector-csvreader/issues/new) and/or submit a [pull request](https://github.com/cuongquay/snap-plugin-collector-csvreader/pulls).
 
 ## Community Support
 This repository is one of **many** plugins in **Snap**, a powerful telemetry framework. See the full project at http://github.com/intelsdi-x/snap To reach out to other users, head to the [main framework](https://github.com/intelsdi-x/snap#community-support)
