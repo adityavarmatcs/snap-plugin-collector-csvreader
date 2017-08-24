@@ -26,8 +26,6 @@ script:
 - make check 2>&1
 notifications:
   email: false
-  slack:
-    secure: VkbZLIc2RH8yf3PtIAxUNPdAu3rQQ7yQx0GcK124JhbEnZGaHyK615V0rbG7HcVmYKGPdB0cXqZiLBDKGqGKb2zR1NepOe1nF03jxGSpPq8jIFeEXSJGEYGL34ScDzZZGuG6qwbjFcXiW5lqn6t8igzp7v2+URYBaZo5ktCS2xY=
 before_deploy:
 - "./scripts/pre_deploy.sh"
 deploy:
