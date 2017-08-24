@@ -35,13 +35,13 @@ func TestLoadConfig(t *testing.T) {
 	Convey("should not panic", t, func() {
 		So(func() {
 			l := CSVReader{}
-			l.loadConfig(cfg)
+			l.getConfig(cfg)
 		}, ShouldNotPanic)
 	})
 
 	Convey("should load config properly", t, func() {
 		l := CSVReader{}
-		l.loadConfig(cfg)
+		l.getConfig(cfg)
 
 		So(len(l.configInt), ShouldEqual, 0)
 		So(len(l.configStr), ShouldEqual, 3)

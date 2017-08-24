@@ -52,7 +52,7 @@ func New() *CSVReader {
 
 // CollectMetrics collects metrics for testing
 func (c *CSVReader) CollectMetrics(mts []plugin.Metric) ([]plugin.Metric, error) {
-	if err := c.loadConfig(mts[0].Config); err != nil {
+	if err := c.getConfig(mts[0].Config); err != nil {
 		return nil, err
 	}
 	logrus.WithFields(logrus.Fields{"ColumnIndex": c.configStr["Index"], "file": c.configStr["file"]}).Info("CollectMetrics")
@@ -115,7 +115,7 @@ func (c *CSVReader) CollectMetrics(mts []plugin.Metric) ([]plugin.Metric, error)
 
 //GetMetricTypes returns metric types for testing
 func (c *CSVReader) GetMetricTypes(cfg plugin.Config) ([]plugin.Metric, error) {
-	if err := c.loadConfig(cfg); err != nil {
+	if err := c.getConfig(cfg); err != nil {
 		return nil, err
 	}
 
@@ -140,7 +140,7 @@ func (c *CSVReader) GetConfigPolicy() (plugin.ConfigPolicy, error) {
 }
 
 // Load config values
-func (c *CSVReader) loadConfig(cfg plugin.Config) error {
+func (c *CSVReader) getConfig(cfg plugin.Config) error {
 	c.configStr = make(map[string]string)
 	c.configInt = make(map[string]int64)
 

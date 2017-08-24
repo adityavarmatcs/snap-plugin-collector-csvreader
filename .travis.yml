@@ -36,6 +36,5 @@ deploy:
   skip_cleanup: true
   on:
     repo: cuongquay/snap-plugin-collector-csvreader
-    branch: master
-    tags: false
+    tags: true
     condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION =~ ^1\.8(|\.[0-9]+)$
