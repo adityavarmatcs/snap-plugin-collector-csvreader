@@ -35,7 +35,7 @@ const (
 	// Name of plugin
 	Name = "csvreader"
 	// Version of plugin
-	Version = 4
+	Version = 1
 )
 
 // CSVReader collector implementation used for testing

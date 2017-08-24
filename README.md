@@ -155,7 +155,7 @@ Load file plugin for publishing:
 $ snaptel plugin load snap-plugin-publisher-file
 Plugin loaded
 Name: file
-Version: 4
+Version: 3
 Type: publisher
 Signed: false
 Loaded Time: Fri, 20 Nov 2015 11:41:39 PST
