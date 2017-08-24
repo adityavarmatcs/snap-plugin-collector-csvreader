@@ -1,0 +1,7 @@
+:global:
+  build:
+    matrix:
+      - GOOS: linux
+        GOARCH: amd64
+.travis.yml:
+  sudo: true
