@@ -20,6 +20,8 @@ limitations under the License.
 # Snap collector plugin - csvreader
 This plugin collects log messages partially for each collection run. Log file reading is limited by time.
 
+[![Build Status](https://travis-ci.org/cuongquay/snap-plugin-collector-csvreader.svg?branch=master)](https://travis-ci.org/cuongquay/snap-plugin-collector-csvreader)
+
 It's used in the [Snap framework](http://github.com:intelsdi-x/snap).
 
 1. [Getting Started](#getting-started)
