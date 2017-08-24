@@ -121,7 +121,7 @@ func TestGetConfigPolicy(t *testing.T) {
 		defaultPolicy := plugin.NewConfigPolicy()
 		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "file", false, plugin.SetDefaultString("/opt/snap/files/metrics.csv"))
 		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "indexes", false, plugin.SetDefaultString("0,1"))
-		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "units", false, plugin.SetDefaultString("min,max"))
+		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "units", false, plugin.SetDefaultString("unit,unit"))
 
 		l := CSVReader{}
 		policy, err := l.GetConfigPolicy()
