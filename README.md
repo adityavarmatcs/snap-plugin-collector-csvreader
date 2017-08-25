@@ -51,7 +51,7 @@ All OSs currently supported by snap:
 #### To build the plugin binary:
 Fork https://github.com/cuongquay/snap-plugin-collector-csvreader
 
-Clone repo into `$GOPATH/src/github.com/intelsdi-x/`:
+Clone repo into `$GOPATH/src/github.com/cuongquay/`:
 
 ```
 $ git clone https://github.com/<yourGithubID>/snap-plugin-collector-csvreader.git
