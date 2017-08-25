@@ -1,0 +1,9 @@
+name: snap-plugin-collector-csvreader
+type: collector
+maintainer: CuongQuay
+license: Apache-2.0
+description: "Collect from CSV file's column as an intelsdi-x snap metric."
+badge:
+  - "[![Build Status](https://travis-ci.org/cuongquay/snap-plugin-collector-csvreader.svg?branch=master)](https://travis-ci.org/cuongquay/snap-plugin-collector-csvreader)"
+ci:
+  - https://travis-ci.org/cuongquay/snap-plugin-collector-csvreader
