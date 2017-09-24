@@ -30,7 +30,8 @@ before_deploy:
 - "./scripts/pre_deploy.sh"
 deploy:
 - provider: releases
-  api_key: $GITHUB_API_KEY
+  api_key:
+    secure: "iE5n6W5/qh24zgz68K0eC9d9wAYfGZDKezr4uztFms0x6fho1BUThIEFjVd4aza9UTN0D5cpLI7XN9nWfuJXUZt/P0G5SdIO8YmKJ/5eZmFXqU2Y34IPJDzkbRveZQ3Rlp0Y+xAHyEJC7JYAjHtrk96H8rloM8pxuoTr7dfad9uSMi9emQNpn1JjbbIvcaN3HK0/g+W0/m2fYUazbCi52lO+i1j2zVxAsZyzMRj5Wo6shPHLhnVKIxSvXl78VAq19bVqdQh4kYu3GdXxWFNMm2ANDWK+8D8MaDmdDl3SNNyF0BX7k4v3+ilpspFu5KcLftM1LKECDnmrEh7K+5UgnDgtAWt2Acynk+smVg+yUl53pW0DWX8FpdMJ6dyqhgm78iGRb5ajj99i5Eirtmg+EBdSje8JdVUhpeqqClyy916s5VNM7BCnqFfyiDGVhqoMmIZ7YsBHobkSv2mHqyLIjvzcEbzFhMoj9QmGRiPYqa7Sc3jTHrvSZ+TnRlMkHvhA4LEA4I9STADc36FFKZpGUHn4dnKj6CDmp4ZX4lHvbb6aS92E+wSunFNaDe1EduwX0bmdg6h8bCV7iLYCqiX99sWrJQi56iKFeoRf8zWBNai58ABSlXbLkRCbWqtDoyiG/gN4bJosB7L4UgQTHGxeb3GuwacpzGNG+7+dYRpbIOY="
   file:
     - release/snap-plugin-collector-csvreader_linux_x86_64
   skip_cleanup: true
