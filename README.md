@@ -69,8 +69,8 @@ This builds the plugin in `./build/`
 #### Task manifest configuration options
 Option|Description|Default value
 ------|-----------|-------------
-"file"|Declaration of full path file name, in CSV format|"opt/snap/files/metrics.csv"
-"indexes"|Defines the list of column indexes that want to collect, separated by comma|"0,1"
+"source"|Declaration of full path file name, in CSV format|"opt/snap/files/metrics.csv"
+"attrs"|Defines the list of column indexes that want to collect, separated by comma|"0,1"
 "units"|The units corresponding to the indexes of each metric|"date,amps"
 
 ## Documentation
@@ -80,7 +80,7 @@ This plugin has the ability to gather the following metrics:
 
 Namespace | Description
 ----------|-----------------------
-/intel/csvreader/[index]/index|Single column metric
+/intel/csvreader/[index]/[source]/message|Single column metric
 
 
 ### Examples
@@ -130,8 +130,8 @@ Create a task manifest file (e.g. `task-csvreader.json`):
             },
             "config": {
                 "/intel/csvreader": {
-                    "file": "/opt/snap/files/test.csv",
-                    "indexes": "0,1",
+                    "source": "/opt/snap/files/test.csv",
+                    "attrs": "0,1",
                     "unit": "u1,u2"
                 }
             },
