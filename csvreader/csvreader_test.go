@@ -28,7 +28,7 @@ import (
 
 func TestLoadConfig(t *testing.T) {
 	cfg := make(plugin.Config)
-	cfg["file"] = "/var/cache/snap"
+	cfg["source"] = "/var/cache/snap"
 	cfg["indexes"] = "0,1"
 	cfg["units"] = "max,min"
 
@@ -50,7 +50,7 @@ func TestLoadConfig(t *testing.T) {
 
 func TestGetMetricTypes(t *testing.T) {
 	cfg := make(plugin.Config)
-	cfg["file"] = "/opt/snap/files/metrics.csv"
+	cfg["source"] = "/opt/snap/files/metrics.csv"
 	cfg["indexes"] = "0,1,2"
 	cfg["units"] = "u1,u2,u3"
 
@@ -67,14 +67,14 @@ func TestGetMetricTypes(t *testing.T) {
 		So(err, ShouldBeNil)
 		So(mt, ShouldNotBeEmpty)
 		So(len(mt), ShouldEqual, 1)
-		So(mt[0].Namespace.Strings(), ShouldResemble, []string{"intel", "csvreader", "*", "index"})
+		So(mt[0].Namespace.Strings(), ShouldResemble, []string{"intel", "csvreader", "*", "/opt/snap/files/metrics.csv"})
 	})
 }
 
 func makeMetric(metricName string, cfg plugin.Config) []plugin.Metric {
 	mts := []plugin.Metric{
 		plugin.Metric{
-			Namespace: plugin.NewNamespace("intel", "csvreader").AddDynamicElement("Index", "Index name defined by indexes").AddStaticElement("index"),
+			Namespace: plugin.NewNamespace("intel", "csvreader").AddDynamicElement("Index", "Index name defined by indexes").AddDynamicElement("Source", "Source of metrics"),
 			Config:    cfg,
 		},
 	}
@@ -94,7 +94,7 @@ func joinMetricData(m []plugin.Metric) string {
 func TestCollectMetrics(t *testing.T) {
 	Convey("should not panic and return valid namespace", t, func() {
 		cfgIndex01 := make(plugin.Config)
-		cfgIndex01["file"] = "/opt/snap/files/metrics.csv"
+		cfgIndex01["source"] = "/opt/snap/files/metrics.csv"
 		cfgIndex01["indexes"] = "0,1"
 		cfgIndex01["units"] = "date,psi"
 		mtsIndex0 := makeMetric("0", cfgIndex01)
@@ -119,7 +119,7 @@ func TestGetConfigPolicy(t *testing.T) {
 
 	Convey("should resemble default config policy", t, func() {
 		defaultPolicy := plugin.NewConfigPolicy()
-		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "file", false, plugin.SetDefaultString("/opt/snap/files/metrics.csv"))
+		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "source", false, plugin.SetDefaultString("/opt/snap/files/metrics.csv"))
 		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "indexes", false, plugin.SetDefaultString("0,1"))
 		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "units", false, plugin.SetDefaultString("unit,unit"))
 

@@ -55,13 +55,13 @@ func (c *CSVReader) CollectMetrics(mts []plugin.Metric) ([]plugin.Metric, error)
 	if err := c.getConfig(mts[0].Config); err != nil {
 		return nil, err
 	}
-	logrus.WithFields(logrus.Fields{"ColumnIndex": c.configStr["Index"], "file": c.configStr["file"]}).Info("CollectMetrics")
+	logrus.WithFields(logrus.Fields{"ColumnIndex": c.configStr["Index"], "source": c.configStr["source"]}).Info("CollectMetrics")
 	metrics := []plugin.Metric{}
 	var strVal string
 	var sliceStr []string
 	var headers []string
 
-	csvPath := c.configStr["file"]
+	csvPath := c.configStr["source"]
 	if csvFile, err := os.Open(csvPath); err == nil {
 		defer csvFile.Close()
 		csvReader := csv.NewReader(csvFile)
@@ -91,6 +91,7 @@ func (c *CSVReader) CollectMetrics(mts []plugin.Metric) ([]plugin.Metric, error)
 			colIdxStr = strings.TrimSpace(colIdxStr)
 			if colIdx, err := strconv.Atoi(colIdxStr); err == nil {
 				ns[2].Value = colIdxStr
+				ns[3].Value = csvPath
 				mt := plugin.Metric{
 					Data:        0.1,
 					Unit:        units[i],
@@ -121,7 +122,7 @@ func (c *CSVReader) GetMetricTypes(cfg plugin.Config) ([]plugin.Metric, error) {
 
 	mts := []plugin.Metric{}
 	mts = append(mts, plugin.Metric{
-		Namespace:   plugin.NewNamespace("intel", Name).AddDynamicElement("Index", "Index of column").AddStaticElement("index"),
+		Namespace:   plugin.NewNamespace("intel", Name).AddDynamicElement("Index", "Index of column").AddDynamicElement("Source", "Source of metrics"),
 		Description: "Single Column Index",
 		Unit:        "string",
 		Version:     Version,
@@ -133,7 +134,7 @@ func (c *CSVReader) GetMetricTypes(cfg plugin.Config) ([]plugin.Metric, error) {
 //GetConfigPolicy returns a ConfigPolicy for testing
 func (c *CSVReader) GetConfigPolicy() (plugin.ConfigPolicy, error) {
 	policy := plugin.NewConfigPolicy()
-	policy.AddNewStringRule([]string{"intel", Name}, "file", false, plugin.SetDefaultString("/opt/snap/files/metrics.csv"))
+	policy.AddNewStringRule([]string{"intel", Name}, "source", false, plugin.SetDefaultString("/opt/snap/files/metrics.csv"))
 	policy.AddNewStringRule([]string{"intel", Name}, "indexes", false, plugin.SetDefaultString("0,1"))
 	policy.AddNewStringRule([]string{"intel", Name}, "units", false, plugin.SetDefaultString("unit,unit"))
 	return *policy, nil
