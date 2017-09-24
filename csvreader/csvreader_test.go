@@ -67,7 +67,7 @@ func TestGetMetricTypes(t *testing.T) {
 		So(err, ShouldBeNil)
 		So(mt, ShouldNotBeEmpty)
 		So(len(mt), ShouldEqual, 1)
-		So(mt[0].Namespace.Strings(), ShouldResemble, []string{"intel", "csvreader", "*", "/opt/snap/files/metrics.csv"})
+		So(mt[0].Namespace.Strings(), ShouldResemble, []string{"intel", "csvreader", "*", "*"})
 	})
 }
 
