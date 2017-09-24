@@ -97,7 +97,7 @@ In another terminal window:
 
 Download csvreader collector plugin:
 ```
-$ wget -O snap-plugin-collector-csvreader https://github.com/cuongquay/snap-plugin-collector-csvreader/releases/download/v1.0-alpha/snap-plugin-collector-csvreader_linux_x86_64
+$ wget -O snap-plugin-collector-csvreader https://github.com/cuongquay/snap-plugin-collector-csvreader/releases/download/v1.1/snap-plugin-collector-csvreader_linux_x86_64
 ```
 
 Load csvreader plugin
