@@ -29,7 +29,7 @@ import (
 func TestLoadConfig(t *testing.T) {
 	cfg := make(plugin.Config)
 	cfg["source"] = "/var/cache/snap"
-	cfg["indexes"] = "0,1"
+	cfg["attrs"] = "0,1"
 	cfg["units"] = "max,min"
 
 	Convey("should not panic", t, func() {
@@ -51,7 +51,7 @@ func TestLoadConfig(t *testing.T) {
 func TestGetMetricTypes(t *testing.T) {
 	cfg := make(plugin.Config)
 	cfg["source"] = "/opt/snap/files/metrics.csv"
-	cfg["indexes"] = "0,1,2"
+	cfg["attrs"] = "0,1,2"
 	cfg["units"] = "u1,u2,u3"
 
 	Convey("should not panic", t, func() {
@@ -95,7 +95,7 @@ func TestCollectMetrics(t *testing.T) {
 	Convey("should not panic and return valid namespace", t, func() {
 		cfgIndex01 := make(plugin.Config)
 		cfgIndex01["source"] = "/opt/snap/files/metrics.csv"
-		cfgIndex01["indexes"] = "0,1"
+		cfgIndex01["attrs"] = "0,1"
 		cfgIndex01["units"] = "date,psi"
 		mtsIndex0 := makeMetric("0", cfgIndex01)
 		l := CSVReader{}
@@ -120,7 +120,7 @@ func TestGetConfigPolicy(t *testing.T) {
 	Convey("should resemble default config policy", t, func() {
 		defaultPolicy := plugin.NewConfigPolicy()
 		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "source", false, plugin.SetDefaultString("/opt/snap/files/metrics.csv"))
-		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "indexes", false, plugin.SetDefaultString("0,1"))
+		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "attrs", false, plugin.SetDefaultString("0,1"))
 		defaultPolicy.AddNewStringRule([]string{"intel", Name}, "units", false, plugin.SetDefaultString("unit,unit"))
 
 		l := CSVReader{}

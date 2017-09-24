@@ -81,7 +81,7 @@ func (c *CSVReader) CollectMetrics(mts []plugin.Metric) ([]plugin.Metric, error)
 		}
 		c.currentRowIndex++
 
-		indexes := strings.Split(c.configStr["indexes"], ",")
+		indexes := strings.Split(c.configStr["attrs"], ",")
 		units := strings.Split(c.configStr["units"], ",")
 		fileMetrics := []plugin.Metric{}
 		for i, colIdxStr := range indexes {
@@ -135,7 +135,7 @@ func (c *CSVReader) GetMetricTypes(cfg plugin.Config) ([]plugin.Metric, error) {
 func (c *CSVReader) GetConfigPolicy() (plugin.ConfigPolicy, error) {
 	policy := plugin.NewConfigPolicy()
 	policy.AddNewStringRule([]string{"intel", Name}, "source", false, plugin.SetDefaultString("/opt/snap/files/metrics.csv"))
-	policy.AddNewStringRule([]string{"intel", Name}, "indexes", false, plugin.SetDefaultString("0,1"))
+	policy.AddNewStringRule([]string{"intel", Name}, "attrs", false, plugin.SetDefaultString("0,1"))
 	policy.AddNewStringRule([]string{"intel", Name}, "units", false, plugin.SetDefaultString("unit,unit"))
 	return *policy, nil
 }
