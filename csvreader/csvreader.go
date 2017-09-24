@@ -122,7 +122,7 @@ func (c *CSVReader) GetMetricTypes(cfg plugin.Config) ([]plugin.Metric, error) {
 
 	mts := []plugin.Metric{}
 	mts = append(mts, plugin.Metric{
-		Namespace:   plugin.NewNamespace("intel", Name).AddDynamicElement("Index", "Index of column").AddDynamicElement("Source", "Source of metrics"),
+		Namespace:   plugin.NewNamespace("intel", Name).AddDynamicElement("Index", "Index of column").AddDynamicElement("Source", "Source of metrics").AddStaticElement("message"),
 		Description: "Single Column Index",
 		Unit:        "string",
 		Version:     Version,
